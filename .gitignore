@@ -1,0 +1,39 @@
+# Dependency directories
+node_modules/
+
+# Environment variables file
+.env
+
+# Compiled TypeScript files
+dist/
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# Mac OS files
+.DS_Store
+
+# npm package lock file
+package-lock.json
+
+# Yarn lock file
+yarn.lock
+
+# TypeScript build artifacts
+*.js
+*.js.map
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+
+# OS generated files
+ehthumbs.db
+Thumbs.db
