@@ -1,15 +1,15 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { connect } from "./utils/mongodb";
-import router from "./routes"
-import cors from "cors"
+import router from "./routes";
+import cors from "cors";
+import multer from "multer";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-// app.use(express.json)
 app.use(express.json({ strict: false }));
 app.use(cors());
 app.use("/api/v1", router);
