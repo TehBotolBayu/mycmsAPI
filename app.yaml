@@ -1,0 +1,19 @@
+runtime: nodejs16
+
+env: standard
+
+service: your-service-name  # Replace with your desired service name
+
+instance_class: F1  # Adjust instance class based on your needs
+
+automatic_scaling:
+  .env: standard
+  min_instances: 1
+  max_instances: 2
+
+env_variables:
+  PRISMA_ENDPOINT: # Set your Prisma service endpoint URL here (replace with actual URL)
+
+handlers:
+- url: /.*
+  script: server.js
