@@ -3,8 +3,18 @@ import Articles from "../models/articles";
 import mongoose from "mongoose";
 import { loadEnvFile } from "process";
 import e from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const Redis = require('redis');
-const redisClient = Redis.createClient();
+const redisClient = Redis.createClient({
+    password: process.env.REDIS_PASSWORD,
+    socket: {
+        host: process.env.REDIS_HOST,
+        port: 12853
+    }
+});
 
 export async function postOne(req:Request, res:Response) {
     try {
@@ -23,13 +33,13 @@ export async function postOne(req:Request, res:Response) {
 export async function getAll(req:Request, res:Response) {
     try {
         const page = parseInt(req.params.page);
-        redisClient.get('articles/'+page, async (error, data) => {
-            if(error){
-                throw new Error(error);
-            }
-            if(data != null){
-                return res.status(200).json(JSON.parse(data))
-            } else {
+        // redisClient.get('articles/'+page, async (error, data) => {
+        //     if(error){
+        //         throw new Error(error);
+        //     }
+        //     if(data != null){
+        //         return res.status(200).json(JSON.parse(data))
+        //     } else {
                 const data:any = await Articles.find().populate('author').lean().limit(5).skip(page*5).sort({createdAt: 'asc'});
                 const dataWithLink = data.map((article) => {
                     return {
@@ -38,11 +48,11 @@ export async function getAll(req:Request, res:Response) {
                             read: '/read/'+article?.titleid
                         }
                 }})
-                redisClient.setex('articles/'+page, 3600, JSON.stringify({message: "Fetch success", data: dataWithLink}))
+                // redisClient.setex('articles/'+page, 3600, JSON.stringify({message: "Fetch success", data: dataWithLink}))
                 return res.status(200).json(
                     {message: "Fetch success", data: dataWithLink})
-            }
-        })
+        //     }
+        // })
 
     } catch (error) {
         console.log("error: "+error);
