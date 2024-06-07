@@ -1,4 +1,4 @@
-runtime: nodejs16
+runtime: nodejs20
 
 env: standard
 
@@ -12,7 +12,15 @@ automatic_scaling:
   max_instances: 2
 
 env_variables:
-  PRISMA_ENDPOINT: # Set your Prisma service endpoint URL here (replace with actual URL)
+  PORT: 3300
+  MONGODB_URI: "mongodb+srv://bayuuabdur2903:raudha@cluster0.wa4oifg.mongodb.net/?retryWrites: true&w: majority&appName: Cluster0"
+  IMAGEKIT_PUBLIC_KEY: "public_YtieyBkImxy+vq4oDgUF+3I84mc: "
+  IMAGEKIT_SECRET_KEY: "private_OMzH3CDuZZlxOdLMgGYxRiItZWk: "
+  IMAGEKIT_URL_ENDPOINT: "https://ik.imagekit.io/r5tbc6e6r"
+  EMAIL_USER: "bayuuabdur2903@gmail.com"
+  EMAIL_PASSWORD: "ppzd elto uqpf twsm"
+  REDIS_PASSWORD: "4zUx72OE926WBNmHwxyOU4Us4Y6WCpQL"
+  REDIS_HOST: "redis-12853.c284.us-east1-2.gce.redns.redis-cloud.com"
 
 handlers:
 - url: /.*
