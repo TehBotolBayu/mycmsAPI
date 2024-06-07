@@ -2,7 +2,7 @@ runtime: nodejs20
 
 env: standard
 
-service: educook  # Replace with your desired service name
+service: default  # Replace with your desired service name
 
 instance_class: F1  # Adjust instance class based on your needs
 
