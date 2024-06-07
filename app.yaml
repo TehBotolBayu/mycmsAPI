@@ -7,7 +7,6 @@ service: default  # Replace with your desired service name
 instance_class: F1  # Adjust instance class based on your needs
 
 env_variables:
-  PORT: 3300
   MONGODB_URI: "mongodb+srv://bayuuabdur2903:raudha@cluster0.wa4oifg.mongodb.net/?retryWrites: true&w: majority&appName: Cluster0"
   IMAGEKIT_PUBLIC_KEY: "public_YtieyBkImxy+vq4oDgUF+3I84mc: "
   IMAGEKIT_SECRET_KEY: "private_OMzH3CDuZZlxOdLMgGYxRiItZWk: "
