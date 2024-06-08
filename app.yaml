@@ -13,8 +13,7 @@ env_variables:
   IMAGEKIT_URL_ENDPOINT: "https://ik.imagekit.io/r5tbc6e6r"
   EMAIL_USER: "bayuuabdur2903@gmail.com"
   EMAIL_PASSWORD: "ppzd elto uqpf twsm"
-  REDIS_PASSWORD: "4zUx72OE926WBNmHwxyOU4Us4Y6WCpQL"
-  REDIS_HOST: "redis-12853.c284.us-east1-2.gce.redns.redis-cloud.com"
+  REDIS_URL: "redis://default:4zUx72OE926WBNmHwxyOU4Us4Y6WCpQL@redis-12853.c284.us-east1-2.gce.redns.redis-cloud.com:12853"
 
 handlers:
 - url: /.*
