@@ -125,7 +125,7 @@ export async function getByTitleId(req:Request, res:Response) {
 export async function searchArticle(req:Request, res:Response) {
     try {
         const search : String = req.body.search;
-        const data:any = await Articles.find({title: { $regex: '.*' + search + '.*' } }).lean();
+        const data:any = await Articles.find({title: { $regex: '.*' + search + '.*' } }).populate('author').lean();
         if (!data) return res.status(404).json({ message: 'Item not found' });
         const dataWithLink = data.map((article) => {
             return {
