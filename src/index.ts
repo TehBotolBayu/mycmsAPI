@@ -20,7 +20,9 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(port, async () => {
-  await connect();
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+// app.listen(port, async () => {
+//   await connect();
+//   console.log(`[server]: Server is running at http://localhost:${port}`);
+// });
+
+export default app;
