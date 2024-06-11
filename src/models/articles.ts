@@ -29,7 +29,7 @@ const userSchema = new Schema({
     }
 }, {timestamps: true});
 
-const User = models.User || mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 articlesSchema.plugin(mongoosePaginate);
 

@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import Articles from "../models/articles";
 
-// const redisClient = client().then((r)=>r);
 import dotenv from "dotenv";
 
 dotenv.config();
