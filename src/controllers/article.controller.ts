@@ -133,16 +133,32 @@ export async function getByTitleId(req: Request, res: Response) {
 
 export async function searchArticle(req: Request, res: Response) {
   try {
+    const filter: string = req.query.filter as string;
+    const sortQuery: number = parseInt(req.query.sort as string);
+    const tagsArray = filter.split(',');
+
+    let sortMethod:any = 1;
+    if(sortQuery)sortMethod = sortQuery;
+    
     const search: string = req.body.search;
     const page: number = parseInt(req.body.page);
-    const data: any = await Articles.find({
-      title: { $regex: ".*" + search + ".*" },
-    })
+    let q:any;
+    if (filter) {
+      q = {
+        title: { $regex: ".*" + search + ".*", $options: 'i' },
+        tags: { $in: tagsArray }
+      }
+    } else {
+      q = {
+        title: { $regex: ".*" + search + ".*", $options: 'i' }
+      }
+    }
+    const data: any = await Articles.find(q)
       .populate("author")
       .lean()
       .limit(5)
       .skip(page * 5)
-      .sort({ createdAt: "asc" });
+      .sort({ createdAt: sortMethod });
     if (!data) return res.status(404).json({ message: "Item not found" });
     const dataWithLink = data.map((article) => {
       return {
